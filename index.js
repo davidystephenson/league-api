@@ -1,7 +1,15 @@
 const express = require('express')
-const League = require('./league/model')
+const leagueRouter = require('./league/router')
+const teamRouter = require('./team/router')
+const bodyParser = require('body-parser')
 
 const app = express()
+
+const jsonParser = bodyParser.json()
+app.use(jsonParser)
+
+app.use(leagueRouter)
+app.use(teamRouter)
 
 const port = process.env.PORT || 3000
 
